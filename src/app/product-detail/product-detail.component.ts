@@ -13,7 +13,7 @@ import { productList } from '../products/producto.mock';
 
 export class ProductDetailComponent implements OnInit{
   
-  producto: string = '';
+  producto?: product;
   productList: product[] = productList;
 
   constructor(private _route: ActivatedRoute){}
@@ -21,9 +21,10 @@ export class ProductDetailComponent implements OnInit{
   ngOnInit(): void {
       this._route.params.subscribe(params =>
       {
-        //this.productList = this.productList.find(product => product.id == params['productId']);
-        this.producto = params['productId'];
-        console.log(params['productId']);
+        this.producto = this.productList.find(product => product.id == params['productId']);
+        
+        //this.producto = params['productId'];
+        //console.log(params['productId']);
 
       }
       )
